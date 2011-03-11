@@ -1,0 +1,2 @@
+module Traptcha
+end
