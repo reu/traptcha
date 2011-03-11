@@ -2,6 +2,6 @@ require "spec_helper"
 require "rmagick"
 require "fileutils"
 
-describe Traptcha::Image do
+describe Traptcha::WaveImage do
   it_behaves_like "a image generator"
 end

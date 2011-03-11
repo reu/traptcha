@@ -14,6 +14,10 @@ module Traptcha
     protected
 
     def generate
+      write_letters
+    end
+
+    def write_letters
       image = ::Magick::Draw.new
 
       image.font_family = "Thonburi"
