@@ -2,7 +2,7 @@ require 'traptcha'
 
 shared_examples_for "a image generator" do
   subject { described_class.new("test") }
-  let(:path) { File.expand_path(File.dirname(__FILE__) + "../../tmp/image_spec") }
+  let(:path) { File.expand_path(File.dirname(__FILE__) + "/tmp") }
 
   before do
     FileUtils.mkdir_p path
