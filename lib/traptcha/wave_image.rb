@@ -1,9 +1,13 @@
 module Traptcha
   class WaveImage < Image
-    def initialize(text, options = { :variation => (20..90), :amplitude => 4 })
-      super(text)
-      @variation = options[:variation]
-      @amplitute = options[:amplitude]
+    attr_accessor :variation, :amplitude
+
+    def variation
+      @variation ||= @options[:variation] ||= Traptcha.default_wave_variation
+    end
+
+    def amplitude
+      @amplitude ||= @options[:amplitude] || Traptcha.default_wave_amplitude
     end
 
     protected
@@ -14,13 +18,13 @@ module Traptcha
     end
 
     def wavenize
-      @canvas = @canvas.wave(@amplitute, random_variation)
+      @canvas = @canvas.wave(amplitude, random_variation)
     end
 
     private
 
     def random_variation
-      rand(@variation.last - @variation.first) + @variation.first
+      rand(variation.last - variation.first) + variation.first
     end
   end
 end

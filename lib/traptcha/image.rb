@@ -1,14 +1,19 @@
 module Traptcha
   class Image
-    def initialize(text)
+    def initialize(text, options = {})
       @text = text
       @canvas = Magick::Image.new(150, 100)
       @canvas.format = "PNG"
+      @options = options
     end
 
     def save(path)
+      output.write(File.join(path, @text + ".png"))
+    end
+
+    def output
       generate
-      @canvas.write(File.join(path, @text + ".png"))
+      @canvas
     end
 
     protected
@@ -28,10 +33,10 @@ module Traptcha
       @text.chars.each do |letter|
         image.annotate(@canvas, 0, 0, position, 90, letter) do
           self.fill = "black"
-          self.pointsize = (20..50).to_a.choice
+          self.pointsize = (40..80).to_a.choice
         end
 
-        position += (20..25).to_a.choice
+        position += (40..55).to_a.choice
       end
     end
   end
