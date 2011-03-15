@@ -1,5 +1,7 @@
 module Traptcha
   class Image
+    delegate :to_png, :to => :output
+
     def initialize(text, options = {})
       @text = text
       @canvas = Magick::Image.new(150, 100)

@@ -20,6 +20,11 @@ module Traptcha
       @@default_wave_amplitude = amplitude
     end
   end
+  mattr_accessor :default_wave_variation
+  @@default_wave_variation = (20..90)
+
+  mattr_accessor :default_wave_amplitude
+  @@default_wave_amplitude = 5
 
   def self.setup
     yield self
