@@ -1,29 +1,13 @@
+require 'traptcha/engine'
+
 module Traptcha
-  autoload :Image,     'traptcha/image'
-  autoload :WaveImage, 'traptcha/wave_image'
-
-  class << self
-
-    def default_wave_variation
-      @@default_wave_variation ||= (20..90)
-    end
-  
-    def default_wave_variation=(variation)
-      @@default_wave_variation = variation
-    end
-  
-    def default_wave_amplitude
-      @@default_wave_amplitude ||= 5
-    end
-  
-    def default_wave_amplitude=(amplitude)
-      @@default_wave_amplitude = amplitude
-    end
-  end
   autoload :Image,             'traptcha/image'
   autoload :WaveImage,         'traptcha/wave_image'
   autoload :Encryptors,        'traptcha/encryptors'
   autoload :Captcha,           'traptcha/captcha'
+  autoload :ControllerHelpers, 'traptcha/controller_helpers'
+  autoload :ViewHelpers,       'traptcha/view_helpers'
+  autoload :InvalidCaptcha,    'traptcha/invalid_captcha'
 
   mattr_accessor :valid_chars
   @@valid_chars = ('a'..'z').to_a + (0..9).map(&:to_s).to_a
