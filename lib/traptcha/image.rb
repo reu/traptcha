@@ -4,7 +4,7 @@ module Traptcha
 
     def initialize(text, options = {})
       @text = text
-      @canvas = Magick::Image.new(150, 100)
+      @canvas = ::Magick::Image.new(150, 100)
       @canvas.format = "PNG"
       @options = options
     end
