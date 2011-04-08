@@ -1,5 +1,12 @@
-require 'rmagick'
 require 'traptcha/engine'
+
+unless defined? Magick
+  begin
+    require 'rmagick'
+  rescue LoadError
+    require 'RMagick'
+  end
+end
 
 module Traptcha
   autoload :Image,             'traptcha/image'
