@@ -1,3 +1,4 @@
+require 'rmagick'
 require 'traptcha/engine'
 
 module Traptcha
