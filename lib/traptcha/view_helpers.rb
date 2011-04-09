@@ -1,7 +1,7 @@
 module Traptcha
   module ViewHelpers
     def captcha_image_tag
-      image_tag captcha_path
+      image_tag captcha_path, :id => 'traptcha'
     end
 
     def captcha_label_tag
