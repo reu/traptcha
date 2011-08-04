@@ -17,16 +17,15 @@ module Traptcha
     end
 
     class << self
-      def generate
-        new generate_random_captcha
+      def generate(options = {})
+        options.reverse_merge! :valid_chars => Traptcha.valid_chars - Traptcha.ignored_chars,
+                               :length => Traptcha.default_length
+
+        new generate_random_captcha(options)
       end
 
-      def generate_random_captcha
-        3.times.map { valid_chars[rand(valid_chars.length)] }.to_s
-      end
-
-      def valid_chars
-        Traptcha.valid_chars - Traptcha.ignored_chars
+      def generate_random_captcha(options = {})
+        options[:length].times.map { options[:valid_chars][rand(options[:valid_chars].length)] }.to_s
       end
     end
   end
