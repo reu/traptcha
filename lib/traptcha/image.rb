@@ -4,7 +4,7 @@ module Traptcha
 
     def initialize(text, options = {})
       @text = text
-      @canvas = ::Magick::Image.new(150, 100)
+      @canvas = ::Magick::Image.new(Traptcha.default_width, Traptcha.default_height)
       @canvas.format = "PNG"
       @options = options
     end
@@ -29,7 +29,7 @@ module Traptcha
 
       image.font_family = "Thonburi"
       image.font_weight = ::Magick::BoldWeight
-      
+
       position = 0
 
       @text.chars.each do |letter|

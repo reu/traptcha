@@ -20,6 +20,12 @@ module Traptcha
   mattr_accessor :default_length
   @@default_length = 3
 
+  mattr_accessor :default_width
+  @@default_width = 200
+
+  mattr_accessor :default_height
+  @@default_height = 100
+
   mattr_accessor :valid_chars
   @@valid_chars = ('a'..'z').to_a + (0..9).map(&:to_s).to_a
 
