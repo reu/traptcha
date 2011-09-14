@@ -1,7 +1,7 @@
 module Traptcha
   module ViewHelpers
     def captcha_image_tag
-      tag :img, :src => "#{captcha_path}?#{rand}", :id => "traptcha", :alt => "captcha"
+      tag :img, :src => "#{captcha_path}?#{rand}", :id => 'traptcha', :alt => 'captcha'
     end
 
     def captcha_label_tag
