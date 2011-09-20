@@ -7,9 +7,9 @@ module Traptcha
     end
 
     def valid_captcha?
-      params[:captcha] && session[:captcha] && Traptcha::Captcha.new(params[:captcha]).value == session[:captcha]
+      params[:captcha] && params[:secure_hash] && Traptcha::Captcha.new(params[:captcha]).value == params[:secure_hash]
     end
-  
+
     def validate_captcha
       raise Traptcha::InvalidCaptcha unless valid_captcha?
     end

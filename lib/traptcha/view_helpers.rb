@@ -1,7 +1,11 @@
+require 'base64'
+
 module Traptcha
   module ViewHelpers
     def captcha_image_tag
-      tag :img, :src => "#{captcha_path}?#{rand}", :id => 'traptcha', :alt => 'captcha'
+      captcha = Traptcha::Captcha.generate
+
+      tag(:img, :src => "data:image/png;base64,#{Base64.encode64(captcha.to_png)}", :id => 'traptcha', :alt => 'captcha') + hidden_field_tag(:secure_hash, captcha.value)
     end
 
     def captcha_label_tag
